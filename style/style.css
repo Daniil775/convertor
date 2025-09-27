@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#app{
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    background: #1D1CE5;
+}
+
+#container{
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+#settings{
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.ava{
+    img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+    }
+}
+
+header{
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main{
+    width: 100%;
+    height: auto;
+}
+
+.converter{
+    width: 100%;
+    height: auto;
+    display: flex;
+    min-height: 70vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.currency-input, .currency-output{
+    color: white;
+    font-family: "Geist";
+}
+
+.currency-input-value, .currency-output-value{
+    font-weight: bold;
+    font-size: 5rem;
+    border: none;
+    outline: none;
+    background: none;
+    width: 250px;
+    color: white;
+    &::placeholder{
+        color: whitesmoke;
+    }
+}
+
+.currency-input-rate, .currency-output-rate{
+    border-top: 1px solid whitesmoke;
+    padding-top: 1rem;
+}
+
+#exchange{
+    background-color: orange;
+    outline: none;
+    border: none;
+    width: 70px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    &:hover{
+        scale: 1.1;
+    }
+}
+
