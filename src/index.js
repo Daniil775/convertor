@@ -4,20 +4,27 @@ const URL = "https://v6.exchangerate-api.com/v6/b241a1b7d0deda1139243659/latest/
 const exchangeBtn = document.querySelector("#exchange")
 const fromCurrencyList = document.getElementById("from-currency-list")
 const toCurrencyList = document.getElementById("to-currency-list")
-let outputValue = document.querySelector(".currency-output-value")
+const currencyInpRate = document.querySelector(".currency-input-rate")
+const currencyOutRate = document.querySelector(".currency-output-rate")
+let currencyOut = document.querySelector(".currency-output-value")
+
+let cache = [];
 
 
 const exchangeRate = async () => {
     const toValue = document.querySelector(".currency-input-value")
 
     let customURL = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${fromCurrencyList.value}/${toCurrencyList.value}/${toValue.value}`;
+    
     try{
        let data = await fetch(customURL);
        if(data.ok){
         data.json()
         .then(data => {
             console.log(data.conversion_result)
-            outputValue.innerHTML = data.conversion_result
+            currencyOut.textContent = data.conversion_result.toFixed(2);
+            currencyInpRate.textContent = `1${fromCurrencyList.value} = ${data.conversion_rate}`
+            currencyOutRate.textContent = `1${toCurrencyList.value} = ${data.conversion_rate}`
         })
        }
     }
@@ -34,6 +41,7 @@ function init(){
     .then(data => {
         console.log(data);
         let rates = Object.keys(data.conversion_rates);
+        cache.push(data.conversion_rates)
 
         rates.forEach((currency) => {
             let option = document.createElement("option");
